@@ -56,7 +56,7 @@ namespace ntgcalls {
         const bool wasIdling = isPaused();
 
         setConfig<AudioSink, AudioDescription>(mode, Microphone, desc.microphone);
-        setConfig<AudioSink, AudioDescription>(mode, Speaker, desc.speaker);
+        setConfig<AudioReceiver, AudioDescription>(mode, Speaker, desc.speaker);
 
         const bool wasCamera = hasDeviceInternal(mode, Camera);
         const bool wasScreen = hasDeviceInternal(mode, Screen);
@@ -66,7 +66,7 @@ namespace ntgcalls {
         }
 
         setConfig<VideoSink, VideoDescription>(mode, Camera, desc.camera);
-        setConfig<VideoSink, VideoDescription>(mode, Screen, desc.screen);
+        setConfig<VideoReceiver, VideoDescription>(mode, Screen, desc.screen);
 
         if (mode == Capture && (wasCamera != hasDeviceInternal(mode, Camera) || wasScreen != hasDeviceInternal(mode, Screen) || wasIdling) && initialized) {
             checkUpgrade();
